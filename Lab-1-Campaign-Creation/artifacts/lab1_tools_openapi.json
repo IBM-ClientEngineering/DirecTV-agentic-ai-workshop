@@ -1,0 +1,714 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "DIRECTV Marketing Campaign \u2014 Agentic Workflow Tools",
+    "description": "Tools for the DIRECTV Personalized Marketing Campaign Agentic Workflow built on IBM watsonx.Orchestrate.",
+    "version": "4.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://directv-workshop-backend-directv-marketing.apps.itz-eo7d3o.hub01-lb.techzone.ibm.com"
+    }
+  ],
+  "paths": {
+    "/api/v1/segments": {
+      "get": {
+        "summary": "List available audience segments \u2014 DIRECTV Customer Analytics",
+        "description": "Returns the available genre, package tier, DMA, and engagement segments from the DIRECTV customer analytics platform. Use this to understand what audience filters are available before selecting customers for a campaign.",
+        "operationId": "list_segments_api_v1_segments_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customers": {
+      "get": {
+        "summary": "Select campaign audience \u2014 DIRECTV Customer 360",
+        "description": "Queries the DIRECTV Customer 360 platform to identify subscribers matching the campaign's target segment. Filters by content genre, package tier, engagement level, and DMA region to build a targeted audience list.",
+        "operationId": "list_customers_api_v1_customers_get",
+        "parameters": [
+          {
+            "name": "genre",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Genre"
+            }
+          },
+          {
+            "name": "package_tier",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Package Tier"
+            }
+          },
+          {
+            "name": "engagement_tier",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Engagement Tier"
+            }
+          },
+          {
+            "name": "dma",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dma"
+            }
+          },
+          {
+            "name": "min_age",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Min Age"
+            }
+          },
+          {
+            "name": "max_age",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Max Age"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/profile": {
+      "post": {
+        "summary": "Build customer marketing profile \u2014 DIRECTV CRM & Viewing History",
+        "description": "Builds a rich marketing profile for a single subscriber by combining data from DIRECTV CRM, viewing history, subscription entitlements, and demographic records. The profile drives personalized content generation.",
+        "operationId": "get_customer_profile_api_v1_customer_profile_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerProfileRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/email/generate": {
+      "post": {
+        "summary": "Generate campaign email template \u2014 DIRECTV Content Generation",
+        "description": "Generates a reusable brand-aligned email template with {{placeholder}} variables for a campaign segment. Takes one representative customer profile as input. Placeholders such as {{customer_first_name}}, {{local_team}}, and {{package_tier}} are substituted with real values during personalization \u2014 not during template generation. The template is reviewed and approved by a human before any emails are sent.",
+        "operationId": "generate_draft_email_api_v1_email_generate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailGenerationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/campaigns": {
+      "post": {
+        "summary": "Create campaign record \u2014 DIRECTV Campaign Management",
+        "description": "Registers a new marketing campaign in the DIRECTV Campaign Management system:\n1. Records the selected audience and their subscriber profiles\n2. Stores the draft email template pending human review\n3. Opens an approval request and notifies the designated approver\n\nThe campaign_id returned is used for all subsequent approval, personalization, and delivery steps.",
+        "operationId": "create_campaign_api_v1_campaigns_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCampaignRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "campaign_id": {
+                      "type": "string",
+                      "description": "Unique campaign UUID"
+                    },
+                    "campaign_name": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Always 'pending_approval' on creation"
+                    },
+                    "total_customers": {
+                      "type": "integer"
+                    },
+                    "draft_id": {
+                      "type": "string",
+                      "description": "UUID of the draft email template"
+                    },
+                    "approver_email": {
+                      "type": "string"
+                    },
+                    "approver_email_confirmation_message": {
+                      "type": "string"
+                    },
+                    "approval_notification_sent": {
+                      "type": "boolean"
+                    },
+                    "email_template": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        },
+                        "greeting": {
+                          "type": "string"
+                        },
+                        "body": {
+                          "type": "string"
+                        },
+                        "closing": {
+                          "type": "string"
+                        },
+                        "ps": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "next_step": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApprovalDecisionRequest": {
+        "properties": {
+          "reviewer": {
+            "type": "string",
+            "title": "Reviewer",
+            "description": "Reviewer name or email"
+          },
+          "decision": {
+            "type": "string",
+            "title": "Decision",
+            "description": "APPROVED or REJECTED"
+          },
+          "reviewer_notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewer Notes",
+            "description": "Optional free-form feedback from the reviewer (stored for audit)."
+          }
+        },
+        "type": "object",
+        "required": ["reviewer", "decision"],
+        "title": "ApprovalDecisionRequest"
+      },
+      "CampaignCustomerInput": {
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "title": "Customer Id",
+            "description": "Hashed customer identifier from the analytics audience mart"
+          },
+          "customer_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Name",
+            "description": "Customer name from CRM / customer 360"
+          },
+          "customer_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Email",
+            "description": "Customer email from CRM / marketing contact policy"
+          },
+          "customer_profile": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Customer Profile",
+            "description": "Resolved CustomerProfile built by the Customer Intelligence Agent"
+          }
+        },
+        "type": "object",
+        "required": ["customer_id", "customer_profile"],
+        "title": "CampaignCustomerInput"
+      },
+      "CreateCampaignRequest": {
+        "properties": {
+          "campaign_name": {
+            "type": "string",
+            "title": "Campaign Name",
+            "description": "Human-readable title shown in Orchestrate UI, e.g. 'Sports ULTIMATE DFW \u2014 April 2026'. The campaign UUID is used internally for all API calls."
+          },
+          "created_by": {
+            "type": "string",
+            "title": "Created By",
+            "description": "Always set to the logged-in participant's email from the wxo_email_id context variable. Never ask the user for this value."
+          },
+          "approver_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approver Email",
+            "description": "Optional approver email override. In watsonx.Orchestrate this can come from the logged-in participant context variable (for example wxo_email_id). If omitted, the API falls back to created_by when it looks like an email."
+          },
+          "genre": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Genre",
+            "description": "Audience filter selected from the customer analytics mart"
+          },
+          "package_tier": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Package Tier",
+            "description": "Subscription package filter from billing / entitlement systems"
+          },
+          "engagement_tier": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Engagement Tier",
+            "description": "Engagement segment from customer analytics"
+          },
+          "dma": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dma",
+            "description": "Designated Market Area filter from customer demographics"
+          },
+          "min_age": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 18.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min Age"
+          },
+          "max_age": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 100.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Age"
+          },
+          "limit": {
+            "type": "integer",
+            "maximum": 25.0,
+            "minimum": 1.0,
+            "title": "Limit",
+            "description": "Max customers to include in campaign",
+            "default": 10
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run",
+            "description": "Simulate delivery without sending emails",
+            "default": true
+          },
+          "selected_customers": {
+            "items": {
+              "$ref": "#/components/schemas/CampaignCustomerInput"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Selected Customers",
+            "description": "Audience selected by the Customer Intelligence Agent. Each item should already include the resolved CustomerProfile."
+          },
+          "draft_template": {
+            "$ref": "#/components/schemas/DraftTemplateInput",
+            "description": "Draft template generated by the Email Generation Agent. This API persists it for approval; it does not generate copy itself."
+          },
+          "generation_metadata": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GenerationMetadataInput"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Optional metadata returned by the Email Generation Agent for auditability"
+          }
+        },
+        "type": "object",
+        "required": [
+          "campaign_name",
+          "created_by",
+          "selected_customers",
+          "draft_template"
+        ],
+        "title": "CreateCampaignRequest"
+      },
+      "CustomerProfileRequest": {
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "title": "Customer Id",
+            "description": "Hashed DIRECTV customer identifier"
+          }
+        },
+        "type": "object",
+        "required": ["customer_id"],
+        "title": "CustomerProfileRequest"
+      },
+      "DraftTemplateInput": {
+        "properties": {
+          "subject": {
+            "type": "string",
+            "title": "Subject"
+          },
+          "greeting": {
+            "type": "string",
+            "title": "Greeting"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "closing": {
+            "type": "string",
+            "title": "Closing"
+          },
+          "ps": {
+            "type": "string",
+            "title": "Ps"
+          }
+        },
+        "type": "object",
+        "required": ["subject", "greeting", "body", "closing", "ps"],
+        "title": "DraftTemplateInput"
+      },
+      "EmailGenerationRequest": {
+        "properties": {
+          "customer_profile": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Customer Profile",
+            "description": "CustomerProfile JSON from /api/v1/customer/profile"
+          }
+        },
+        "type": "object",
+        "required": ["customer_profile"],
+        "title": "EmailGenerationRequest"
+      },
+      "GenerationMetadataInput": {
+        "properties": {
+          "llm_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llm Model"
+          },
+          "favorite_genre": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Favorite Genre"
+          },
+          "package_tier": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Package Tier"
+          },
+          "locality_hint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Locality Hint"
+          },
+          "generated_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Generated At"
+          },
+          "representative_customer_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Representative Customer Id"
+          }
+        },
+        "type": "object",
+        "title": "GenerationMetadataInput"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
