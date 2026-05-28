@@ -256,7 +256,7 @@ In this section you will deal with the core part to of this lab which is to desi
 33. Click the **Message** block and paste the below content.
 
     ```
-    The campaign template has been personlised for {flow["User activity 1"]["Personalize approved template — DIRECTV Marketing Personalization"].output.personalized_count} customer(s)
+    The campaign template has been personalized for {flow["User activity 1"]["Personalize approved template — DIRECTV Marketing Personalization"].output.personalized_count} customer(s)
 
     Each email is being tailored with their personal details.
     ```
@@ -283,9 +283,9 @@ In this section you will deal with the core part to of this lab which is to desi
 38. Click the **Message** block and paste the below content.
 
     ```
-    {flow["User activity 1"]["Personalize approved template — DIRECTV Marketing Personalization"].output.personalized_count}Email(s) have been sent successfully.
+    {flow["User activity 1"]["Personalize approved template — DIRECTV Marketing Personalization"].output.personalized_count} Email(s) have been sent successfully.
 
-    Campaign {flow["User activity 1"]["Deliver campaign emails — Salesforce Marketing Cloud"].output.campaign_name}is now complete!
+    Campaign {flow["User activity 1"]["Deliver campaign emails — Salesforce Marketing Cloud"].output.campaign_name} is now complete!
     ```
 
     ![image.png](images/deliver5.png)
