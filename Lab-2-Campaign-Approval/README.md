@@ -70,7 +70,7 @@ In this section you will deal with the step by step guide to build the Approval 
    - `List Campaigns` tool - This tool will be used to list all the campaigns which are pending for review.
    - `Get Campaign details` tool - This tool will be used to get the details of a specific campaign.
    - `Submit approval decision` tool - This tool will be used to submit the approval decision for a specific campaign.
-   - `Personalise approved template` tool - This tool will be used to personalise the approved template for the targeted customers.
+   - `Personalize approved template` tool - This tool will be used to personalize the approved template for the targeted customers.
    - `Deliver campaign emails` tool - This tool will be used to deliver the campaign emails to the targeted customers.
 
 7. **Select the first checkbox** next to the **Name** column to select all the tools and click **Done**.
@@ -156,7 +156,7 @@ In this section you will deal with the core part to of this lab which is to desi
 
     ![appearance.png](images/select_var_form2.png)
 
-15. Reorder the columns as shown below by dragging and moving the leftmost icon. Then disable the columns which you do not wish to present to the user by unchecing the **eye** icon. Click **Done**. the click on the **x** icon to close the component.
+15. Reorder the columns as shown below by dragging and moving the leftmost icon. Then disable the columns which you do not wish to present to the user by unchecking the **eye** icon. Click **Done**. the click on the **x** icon to close the component.
 
     ![image.png](images/select_var_form3.png)
 
@@ -237,11 +237,11 @@ In this section you will deal with the core part to of this lab which is to desi
     - **reviewer_notes**: `Rejected`
       ![image.png](images/submit_approval8.png)
 
-29. Now that you have updated the backend database with the approver decision, we can now proceed to the next step where upon approval, we personalise the emails to a customer. To do this from the **Tools** tab, drag the **Personalise approved template** tool onto the **+** icon in the **approval** path as shown below.
+29. Now that you have updated the backend database with the approver decision, we can now proceed to the next step where upon approval, we personalize the emails to a customer. To do this from the **Tools** tab, drag the **Personalize approved template** tool onto the **+** icon in the **approval** path as shown below.
 
     ![image.png](images/personalise1.png)
 
-30. Click the **Personalise approved template** tool and select the **Edit data mapping** option.
+30. Click the **Personalize approved template** tool and select the **Edit data mapping** option.
 
     ![image.png](images/personalise2.png)
 
@@ -249,7 +249,7 @@ In this section you will deal with the core part to of this lab which is to desi
 
     ![image.png](images/personalise3.png)
 
-32. Now that we are personalising the emails for target customers, you can inform the approver once this process is complete. To do this click the **+** icon below **Personalise approved template** tool, hover over **Present to user** and select **Message** option.
+32. Now that we are personalising the emails for target customers, you can inform the approver once this process is complete. To do this click the **+** icon below **Personalize approved template** tool, hover over **Present to user** and select **Message** option.
 
     ![image.png](images/personalise4.png)
 
@@ -263,7 +263,7 @@ In this section you will deal with the core part to of this lab which is to desi
 
     ![image.png](images/personalise5.png)
 
-34. Now that you have personalised the email template for each customer. You need to deliver the emails to the customers. To do this from the **Tools** tab, drag the **Deliver Campaign emails** tool onto the **+** icon in the **approval** path as shown below.
+34. Now that you have personalized the email template for each customer. You need to deliver the emails to the customers. To do this from the **Tools** tab, drag the **Deliver Campaign emails** tool onto the **+** icon in the **approval** path as shown below.
 
     ![image.png](images/deliver1.png)
 
