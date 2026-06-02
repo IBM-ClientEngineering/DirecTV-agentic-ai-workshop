@@ -199,10 +199,11 @@ Start by creating the Customer Intelligence Agent, which is responsible for buil
    Identifies DIRECTV subscribers matching a campaign's target segment and builds rich marketing profiles for each customer. Receives explicit customer IDs from the Email Campaign Manager and calls the profile builder once per customer to assemble behavioral, demographic, and recommendation data — including viewing patterns, channel preferences, engagement tier, and local market context. Returns fully structured profiles ready for the Email Generation Agent. Does not select audiences, does not generate email content, and does not fabricate customer data if a profile lookup fails.
    ```
    
-   ![image.png](images/ci1.png)
-
-   UI could be different for you, but the fields should be the same.
    ![image.png](images/Create_from_scratch.png)
+
+   ![alt text](images/lab_1_step_2.2.png)
+
+  
 
 
 3. This opens the agent you just created. Take a moment to familiarize yourself with the following sections:
@@ -329,8 +330,8 @@ In this section, you will build the agent that generates email templates based o
    ```
    Generates brand-compliant DIRECTV marketing email templates from a representative customer profile. Takes the profile output from the Customer Intelligence Agent and produces a single reusable template with {{placeholder}} variables — such as {{customer_first_name}}, {{local_team}}, and {{package_tier}} — that are substituted with real customer values during personalization, after human approval. Does not send emails, does not select audiences, and does not personalize content.
    ```
-
-   ![image.png](images/ea1.png)
+![image.png](images/Create_from_scratch.png)
+   ![alt text](images/lab_1_step_2.3.png)
 
 3. Scroll down to the **Toolset** section and click **Add tool +**.
 
@@ -503,11 +504,12 @@ In this section, you will build the main Orchestrator Agent that coordinates the
    ```
    Orchestrates DIRECTV marketing campaigns from brief to approval hand-off. Understands the user's campaign requirements, coordinates the Customer Intelligence Agent and Email Generation Agent to build the target customer segment and draft email, then saves the campaign record and triggers an approval notification email.
    ```
-
+![image.png](images/Create_from_scratch.png)
+   
    ![image.png](images/cm1.png)
 
-   UI could be different for you, but the fields should be the same.
-   ![image.png](images/Create_from_scratch.png)
+
+   
 
 2. Scroll down to the **Toolset** section and click on **Add tool+**
 
