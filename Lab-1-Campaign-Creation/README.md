@@ -198,8 +198,12 @@ Start by creating the Customer Intelligence Agent, which is responsible for buil
    ```
    Identifies DIRECTV subscribers matching a campaign's target segment and builds rich marketing profiles for each customer. Receives explicit customer IDs from the Email Campaign Manager and calls the profile builder once per customer to assemble behavioral, demographic, and recommendation data — including viewing patterns, channel preferences, engagement tier, and local market context. Returns fully structured profiles ready for the Email Generation Agent. Does not select audiences, does not generate email content, and does not fabricate customer data if a profile lookup fails.
    ```
-
+   
    ![image.png](images/ci1.png)
+
+   UI could be different for you, but the fields should be the same.
+   ![image.png](images/Create_from_scratch.png)
+
 
 3. This opens the agent you just created. Take a moment to familiarize yourself with the following sections:
    - **Profile** — Controls the high-level objective of the agent, where you set the type and optional quick-start prompts.
@@ -457,6 +461,7 @@ In this section, you will build the agent that generates email templates based o
      - **Movies**: Cinematic, nostalgic, quality-focused
 
 #### Test the Agent
+In the built-in chat window on the right-hand side of the screen
 
 1. **Provide a Sample Profile**
 
@@ -500,6 +505,9 @@ In this section, you will build the main Orchestrator Agent that coordinates the
    ```
 
    ![image.png](images/cm1.png)
+
+   UI could be different for you, but the fields should be the same.
+   ![image.png](images/Create_from_scratch.png)
 
 2. Scroll down to the **Toolset** section and click on **Add tool+**
 

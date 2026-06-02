@@ -75,7 +75,7 @@ In this section you will deal with the step by step guide to build the Approval 
 
 7. **Select the first checkbox** next to the **Name** column to select all the tools and click **Done**.
 
-   ![image.png](images/select_tool.png)
+   ![image.png](images/select_tool1.png)
 
 <!-- [← Back to Table of contents](#table-of-contents) -->
 
@@ -124,7 +124,7 @@ In this section you will deal with the core part to of this lab which is to desi
    ![image.png](images/drag_list_campaigns.png)
    This tool will list out all the campaings that have been submitted for approval.
 
-7. You now need to build a form for the approver to select a particular campaign, to do this you need to build a form component. Drag the **User Activity** Component onto the **+** symbol as shown below
+7. You now need to build a form for the approver to select a particular campaign, to do this you need to build a form component. Switch from "Tools" to "Flow Nodes" and Drag the **User Activity** Component onto the **+** symbol as shown below
 
    ![image.png](images/drag_ua.png)
 
@@ -170,7 +170,7 @@ In this section you will deal with the core part to of this lab which is to desi
 
 18. Click the **{x}** icon, choose the **Select Campaign to review** (which is basically the previous form we created) and select the first varaible which says `Select Campaign.campaign_id`
 
-    ![image.png](images/get_campaign3.png)
+   ![alt text](images/get_campaign_details_updated.png) 
 
 19. You have now fetched the selected campaign details, now you need to display the campaign template generated for the approver to review. To do this, click the **+** icon below the tool you just added and select the **Add a form** option.
 
@@ -221,7 +221,7 @@ In this section you will deal with the core part to of this lab which is to desi
 
 26. For remaining fields enter the following values (Ensure you the copy the exact same value for the **decision** field):
     - **decision**: `APPROVED`
-    - **reviewer**: `Orchestrate`
+    - **reviewer**: `Orchestrator`
     - **reviewer_notes**: `Approved`
       ![image.png](images/submit_approval6.png)
 
@@ -251,7 +251,7 @@ In this section you will deal with the core part to of this lab which is to desi
 
 32. Now that we are personalising the emails for target customers, you can inform the approver once this process is complete. To do this click the **+** icon below **Personalize approved template** tool, hover over **Present to user** and select **Message** option.
 
-    ![image.png](images/personalise4.png)
+    ![alt text](images/present_to_user_updated.png)
 
 33. Click the **Message** block and paste the below content.
 
@@ -261,11 +261,11 @@ In this section you will deal with the core part to of this lab which is to desi
     Each email is being tailored with their personal details.
     ```
 
-    ![image.png](images/personalise5.png)
+    ![alt text](images/step_33.png) 
 
 34. Now that you have personalized the email template for each customer. You need to deliver the emails to the customers. To do this from the **Tools** tab, drag the **Deliver Campaign emails** tool onto the **+** icon in the **approval** path as shown below.
 
-    ![image.png](images/deliver1.png)
+  ![alt text](images/deliver_campaign_email_details_updated.png) 
 
 35. Click the **Deliver Campaign emails** tool and select the **Edit data mapping** option.
 
@@ -273,12 +273,12 @@ In this section you will deal with the core part to of this lab which is to desi
 
 36. Click the **{x}** icon for the **campaign_id** variable. Select the **Select campaign to review** item from the left menu and click the second **campaign_id** vairable. Set the **dry_run** variable to **True**.
 
-    ![image.png](images/personalise3.png)
+    ![alt text](images/step_36.png)
     <!-- ![image.png](images/personalise4.png) -->
 
 37. Since you are delivering the emails directly to the customers, you can inform the approver once this process is complete. To do this click the **+** icon below **Deliver Campaign emails** tool, hover over **Present to user** and select **Message** option.
 
-    ![image.png](images/deliver4.png)
+   ![alt text](images/step_37.png)
 
 38. Click the **Message** block and paste the below content.
 
@@ -433,13 +433,13 @@ In this section you will be dealing with deploying the agent with the Agentic Ap
 
 5. This will give us the details of the campaign template for the campaign that was generated as below.
 
-   ![image.png](images/test5.png)
+   ![alt text](images/step_6.png) 
 
 6. Upon review it is upto the reviewer to accept or reject the campaign. For testing purpose you go ahead and **Approve the campaign**
 
 7. Upon approval you can see that the next steps of personalising and delivering the campaign to the target customers will take place.
 
-   ![image.png](images/test6.png)
+  ![alt text](images/step_7.png)
 
 8. At the end of the campaign you can see that the agent prompts the approver if they wish to check for other pending requests, if the approver confirms, the process will start again.
 
