@@ -166,7 +166,7 @@ In this section you will deal with the core part to of this lab which is to desi
 
 17. Click the **Get campaign details** tool you just added and click **Edit data mapping**
 
-    ![image.png](images/get_campaign2.png)
+    ![image.png](images/get_campaign2_2.png)
 
 18. Click the **{x}** icon, choose the **Select Campaign to review** (which is basically the previous form we created) and select the first varaible which says `Select Campaign.campaign_id`
 
@@ -243,7 +243,7 @@ In this section you will deal with the core part to of this lab which is to desi
 
 30. Click the **Personalize approved template** tool and select the **Edit data mapping** option.
 
-    ![image.png](images/personalise2.png)
+    ![image.png](images/personalise2_2.png)
 
 31. Click the **{x}** icon for the **campaign_id** variable. Select the **Select campaign to review** item from the left menu and click the second **campaign_id** vairable.
 
